@@ -99,13 +99,14 @@
         onLoadCallback && script.addEventListener("load", onLoadCallback);
         firstScript.parentNode.insertBefore(script, firstScript);
       }
-  
+
       loadScript(document, "script", "https://api.glia.com/salemove_integration.js", callback);
     };
-  
+
     installSaleMove(function () {
+      console.log("does it work")
       sm.getApi({ version: 'v1' }).then(function (salemove) {
-        console.log("jeff mo: this is a test");
+        console.log("this is a test");
       });
     });
   </script>
