@@ -88,7 +88,27 @@
     window.getGliaContext = () => ({ idToken });
   </script>
 
-  <script async src="//api.beta.glia.com/salemove_integration.js"></script>
+  <script>
+    var installSaleMove = function (callback) {
+      function loadScript(document, scriptTag, scriptUrl, onLoadCallback) {
+        var script = document.createElement(scriptTag),
+          firstScript = document.getElementsByTagName(scriptTag)[0];
+        script.async = 1;
+        script.src = scriptUrl;
+        script.type = "text/javascript";
+        onLoadCallback && script.addEventListener("load", onLoadCallback);
+        firstScript.parentNode.insertBefore(script, firstScript);
+      }
+  
+      loadScript(document, "script", "https://api.glia.com/salemove_integration.js", callback);
+    };
+  
+    installSaleMove(function () {
+      sm.getApi({ version: 'v1' }).then(function (salemove) {
+        console.log("jeff mo: this is a test");
+      });
+    });
+  </script>
 </body>
 
 </html>
